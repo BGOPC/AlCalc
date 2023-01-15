@@ -8,7 +8,10 @@ public class complex {
         this.real = real;
         this.image = image;
     }
-
+    public complex(Power image) {
+        this.real = 1;
+        this.image = image;
+    }
     public String toString() {
         return this.real.toString() + this.image.toString();
     };
