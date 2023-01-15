@@ -26,8 +26,20 @@ public class complex {
         return new complex(this.real, compL);
     }
 
-    public void mul(complex RHS) { // complex
-        System.out.println(this.numMul(this.real, RHS).varMul(this.image, RHS).toString());
+    public complex mul(complex RHS) {
+        return this.numMul(this.real, RHS).varMul(this.image, RHS);
+    }
+    public complex add(complex RHS) throws IllegalArgumentException {
+        if (this.image == RHS.image){
+            return new complex(this.real + RHS.real, this.image);
+        }
+        throw new IllegalArgumentException("different images are not supported");
+    }
+    public complex sub(complex RHS) throws IllegalArgumentException {
+        if (this.image == RHS.image){
+            return new complex(this.real - RHS.real, this.image);
+        }
+        throw new IllegalArgumentException("different images are not supported");
     }
 }
 
