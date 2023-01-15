@@ -20,6 +20,9 @@ public class complex {
     }
 
     public String toString() {
+        if (this.real.intValue() == this.real){
+            return Integer.valueOf(this.real.intValue()).toString() + this.image.toString();
+        }
         return this.real.toString() + this.image.toString();
     };
 
@@ -76,6 +79,11 @@ class Power {
     }
 
     public String toString() {
+        if (this.pow == 0){
+            return "";
+        } else if (this.pow == 1){
+            return this.base;
+        }
         return this.base + "^" + this.pow.toString();
     }
 
@@ -83,14 +91,16 @@ class Power {
         if (this.base == num.base) {
             return new Power(num.base, num.pow + this.pow);
         } else if (this.pow == num.pow){
-            return new Power(this.base+num.base, this.pow);
+            return new Power(this.base+"*"+num.base, this.pow);
         }
-        throw new IllegalArgumentException("different bases aren't supported");
+        throw new IllegalArgumentException("different bases and powers aren't supported");
     }
     public Power div(Power num) throws IllegalArgumentException {
         if (this.base == num.base) {
-            return new Power(num.base, num.pow - this.pow);
+            return new Power(num.base, this.pow - num.pow);
+        } else if (this.pow == num.pow){
+            return new Power(String.format("(%s/",this.base)+num.base+")", this.pow);
         }
-        throw new IllegalArgumentException("different bases aren't supported");
+        throw new IllegalArgumentException("Different bases and powers aren't supported");
     }
 }
