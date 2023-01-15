@@ -41,6 +41,7 @@ public class Tokenizer {
             }
             Output.put(Complex, op);
         }
+        return this.Output;
 
     }
 }
