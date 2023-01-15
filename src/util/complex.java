@@ -20,11 +20,25 @@ public class complex{
 
         return new complex(compR, RHS.image);
     }
-    public void mul(complex LHS, complex RHS){ //complex
+    public void mul(complex RHS){ //complex
         
     }
 }
 
 class Power{
-    
+    public Integer base;
+    public Integer pow;
+    public Power(int base, int power){
+        this.base = base;
+        this.pow = power;
+    }
+    public String toString(){
+        return this.base.toString() + "^" + this.pow.toString();
+    }
+    public Power mul(Power num) throws IllegalArgumentException{
+        if (this.base == num.base){
+            return new Power(num.base, num.pow + this.pow);
+        }
+        throw new IllegalArgumentException("different bases aren't supported");
+    }
 }
