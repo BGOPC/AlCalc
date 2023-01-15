@@ -2,8 +2,8 @@ package src.util;
 
 public class complex{
     public Integer real;
-    public String image;
-    public complex(Integer real, String image){
+    public Power image;
+    public complex(Integer real, Power image){
         this.real = real;
         this.image = image;
     }
@@ -15,10 +15,9 @@ public class complex{
 
         return new complex(compR, RHS.image);
     }
-    complex varMul(String LHS, complex RHS){
-
-
-        return new complex(compR, RHS.image);
+    complex varMul(Power LHS, complex RHS){
+        Power compL = LHS.mul(RHS.image);
+        return new complex(RHS.real, compL);
     }
     public void mul(complex RHS){ //complex
         
